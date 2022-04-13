@@ -155,7 +155,7 @@ public class SwaggerController {
     }
 
     /**
-     * 从JFinal中获取全部Action
+     * 获取全部Action
      */
     private Map<Class<?>, List<Action>> getApiAction(String basePackage) {
         Map<Class<?>, List<Action>> apiMap = new HashMap<>(16);
@@ -557,7 +557,7 @@ public class SwaggerController {
     }
 
     /**
-     * 避免JFinal ControllerKey 设置前缀后,与swagger basePath 设置导致前端生成2次
+     * 避免ControllerKey 设置前缀后,与swagger basePath 设置导致前端生成2次
      */
     private String getControllerKey(String actionKey) {
         String basePath = this.groupPackageBasePath;

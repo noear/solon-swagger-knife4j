@@ -1,29 +1,31 @@
-JFinal-swagger-knife4j = JFinal to easy use knife4j UI for swagger
+solon-swagger-knife4j = Solon to easy use knife4j UI for swagger
 
-JFinal集成knife4j,按UI规范生成相应的Swagger Json
+solon 集成 knife4j , 按UI规范生成相应的 Swagger Json
 
 
 使用方式：
 maven引入
-```
+```xml
 <dependency>
-    <groupId>com.lastB7</groupId>
-    <artifactId>jfinal-swagger-knife4j</artifactId>
-    <version>2.4</version>
+    <groupId>org.noear</groupId>
+    <artifactId>solon-swagger-knife4j</artifactId>
+    <version>1.0.0</version>
 </dependency>
 ```
 
 初始化插件
+```java
+@EnableSwagger
+public class App {
+    public static void main(String[] args) {
+        Solon.start(App.class, args);
+    }
+}
 ```
-me.add(new SwaggerRoutes());
-me.add(new SwaggerPlugin());
-me.add(new SwaggerHandler());
 
-```
+初始化配置文件，copy 到工程 resources/swagger.properties 目录下
 
-初始化配置文件
-copy到工程resources目录下
-```
+```properties
 # 配置 swagger
 
 # 启用文档
@@ -37,20 +39,20 @@ info_title = 在线文档
 # 文档说明
 info_description = 在线API文档
 # 服务条件
-info_termsOfService = https://github.com/996icu/996.ICU/blob/master/LICENSE
+info_termsOfService = https://gitee.com/noear/solon/blob/master/LICENSE
 # 许可
-info_license_name = linBq
-info_license_url = http://www.jfinal.com/user/43453
+info_license_name = demo
+info_license_url = https://gitee.com/noear/solon
 # 联系方式
-info_contact_name = linBq
-info_contact_email = 526509994@qq.com
+info_contact_name = demo
+info_contact_email = demo@qq.com
 # 文档版本号
 info_version = 1.0
 
 # 访问地址,默认指向当前服务器
 # host = 127.0.0.1:8080
 
-# 访问前缀,默认为空,需与JFinal配置的controllerKey前缀一致
+# 访问前缀,默认为空,需与solon配置的controllerKey前缀一致
 basePath = /api
 
 # 访问许可
@@ -90,51 +92,5 @@ globalSecurityParameters = token#header, testPara#query
 # enableFooterCustom = true
 # 自定义Footer内容,支持Markdown语法. 需enableFooter=false&&enableFooterCustom=true时生效
 # footerCustomContent = Apache License 2.0 | Copyright  2019-[浙江八一菜刀股份有限公司](https://gitee.com/xiaoym/knife4j)
-
-
-
-```
-
-使用示例
-```
-public class MainConfig extends JFinalConfig {
-
-    public static void main(String[] args) {
-        // UndertowServer.start(MainConfig.class);
-        // 使用undertow的热加载模式
-        UndertowServer.create(MainConfig.class)
-            .addHotSwapClassPrefix("org.noear.solon.swagger.")
-            .start();
-    }
-
-    @Override
-    public void configConstant(Constants me) {}
-
-    @Override
-    public void configRoute(Routes me) {
-        me.add("/index", IndexController.class);
-
-        // swagger路由
-        me.add(new SwaggerRoutes());
-    }
-
-    @Override
-    public void configEngine(Engine me) {
-    }
-
-    @Override
-    public void configPlugin(Plugins me) {
-        me.add(new SwaggerPlugin());
-    }
-
-    @Override
-    public void configInterceptor(Interceptors me) {
-    }
-
-    @Override
-    public void configHandler(Handlers me) {
-        me.add(new SwaggerHandler());
-    }
-}
 
 ```
