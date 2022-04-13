@@ -54,7 +54,7 @@ info_version = 1.0
 # host = 127.0.0.1:8080
 
 # 访问前缀,默认为空,需与solon配置的controllerKey前缀一致
-basePath = /api
+basePath = /
 
 # 访问许可
 schemes = http, https
