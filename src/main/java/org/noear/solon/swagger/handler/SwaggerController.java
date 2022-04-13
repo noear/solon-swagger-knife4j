@@ -216,10 +216,12 @@ public class SwaggerController {
             return;
         }
 
+        String controllerKey = getControllerKey(clazz);
+
         for (String tags : api.tags()) {
             KvMap tag = new KvMap();
             tag.set("name", tags);
-            tag.set("controllerKey", actions.get(0).controller().clz().getTypeName());//getControllerKey()
+            tag.set("controllerKey", controllerKey);//getControllerKey()
             tag.set("controllerName", clazz.getSimpleName());
 
             this.tagsList.add(tag);
@@ -242,8 +244,8 @@ public class SwaggerController {
                 return;
             }
 
-            String controllerKey = action.controller().clz().getTypeName(); //this.getControllerKey(action.getControllerKey());
-            String actionName = method.getName();//action.getMethodName();
+            String controllerKey = this.getControllerKey(action.controller().clz());
+            String actionName = action.name();//action.getMethodName();
 
             Set<String> tags = new HashSet<>();
             tags.addAll(Arrays.asList(actions.get(0).controller().clz().getAnnotation(Api.class).tags()));
@@ -559,13 +561,18 @@ public class SwaggerController {
     /**
      * 避免ControllerKey 设置前缀后,与swagger basePath 设置导致前端生成2次
      */
-    private String getControllerKey(String actionKey) {
-        String basePath = this.groupPackageBasePath;
-        if (null == basePath) {
-            basePath = SwaggerConst.CONFIG.get("basePath", "");
+    private String getControllerKey(Class<?> controllerClz) {
+        Mapping mapping = controllerClz.getAnnotation(Mapping.class);
+        if (mapping == null) {
+            return "";
         }
 
-        return actionKey.replaceFirst(basePath, "").substring(1);
+        String path = Utils.annoAlias(mapping.value(), mapping.path());
+        if (path.startsWith("/")) {
+            return path.substring(1);
+        } else {
+            return path;
+        }
     }
 
     /**
