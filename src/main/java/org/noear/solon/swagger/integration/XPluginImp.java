@@ -11,7 +11,6 @@ import org.noear.solon.swagger.annotation.EnableSwagger;
 import org.noear.solon.swagger.SwaggerConst;
 import org.noear.solon.swagger.SwaggerHttpCode;
 import org.noear.solon.swagger.SwaggerRes;
-import org.noear.solon.swagger.handler.SwaggerController;
 import org.noear.solon.SolonApp;
 import org.noear.solon.core.Plugin;
 

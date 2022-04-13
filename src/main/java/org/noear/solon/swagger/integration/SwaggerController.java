@@ -1,4 +1,4 @@
-package org.noear.solon.swagger.handler;
+package org.noear.solon.swagger.integration;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
