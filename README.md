@@ -13,7 +13,8 @@ maven引入
 </dependency>
 ```
 
-初始化插件
+启用示例
+
 ```java
 @EnableSwagger
 public class App {
