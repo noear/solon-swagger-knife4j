@@ -1,6 +1,7 @@
 package org.noear.solon.swagger.integration;
 
 import java.util.Map;
+import java.util.Properties;
 
 import org.noear.solon.Utils;
 import org.noear.solon.core.Props;
@@ -61,7 +62,10 @@ public class XPluginImp implements Plugin {
             return;
         }
 
-        SwaggerConst.CONFIG = new Props(Utils.loadProperties(this.propPath));
+        Properties properties = Utils.loadProperties(this.propPath);
+
+        SwaggerConst.CONFIG = new Props();
+        SwaggerConst.CONFIG.putAll(properties);
         SwaggerConst.HTTP_CODE = this.httpCode;
         SwaggerConst.COMMON_RES = this.commonRet;
         SwaggerConst.RESPONSE_IN_DATA = SwaggerConst.CONFIG.getBool("responseInData", true);
