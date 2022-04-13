@@ -66,7 +66,7 @@ public class SwaggerController {
     /**
      * 默认转发
      */
-    @Mapping("")
+    @Mapping(value = "",produces = "text/html; charset=utf-8")
     public String index() throws IOException {
         return Utils.getResourceAsString("META-INF/resources/doc.html");
     }
@@ -80,7 +80,7 @@ public class SwaggerController {
         kv.set("swagger_resources", SwaggerConst.CONFIG.get("swagger_resources"));
         kv.set("swaggerVersion", SwaggerConst.CONFIG.get("swaggerVersion"));
 
-        return new ModelAndView("swagger-template/swagger-resources.jf", kv);
+        return new ModelAndView("swagger-template/swagger-resources.shtm", kv);
 
         // renderJson(Engine.use("swagger").getTemplate("/swagger-resources.jf").renderToString(kv));
     }
@@ -113,7 +113,7 @@ public class SwaggerController {
 
         kv.set("groupPackageBasePath", this.groupPackageBasePath);
 
-        return new ModelAndView("swagger-template/api-docs.jf", kv);
+        return new ModelAndView("swagger-template/api-docs.shtm", kv);
 
         //renderJson(Engine.use("swagger").getTemplate("/api-docs.jf").renderToString(kv));
     }
