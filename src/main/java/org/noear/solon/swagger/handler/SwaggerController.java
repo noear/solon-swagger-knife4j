@@ -68,7 +68,8 @@ public class SwaggerController {
      */
     @Mapping(value = "swagger",produces = "text/html; charset=utf-8")
     public String index() throws IOException {
-        return Utils.getResourceAsString("META-INF/resources/doc.html");
+        String html = Utils.getResourceAsString("META-INF/resources/doc.html");
+        return html;
     }
 
     /**
