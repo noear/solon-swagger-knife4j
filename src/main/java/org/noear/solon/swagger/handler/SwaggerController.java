@@ -338,11 +338,13 @@ public class SwaggerController {
         }
 
         // 2.9.1 实验性质 自定义返回值
-        ApiResCustom apiResCustom = method.getAnnotation(ApiResCustom.class);
-        if (null != apiResCustom && apiResCustom.value() != Void.class) {
-            KvMap commonResKv = this.parseSwaggerModel(apiResCustom.value());
-            swaggerModelName = commonResKv.getStr("name");
-            return swaggerModelName;
+        Class<?> apiResClz = method.getReturnType();
+        if (apiResClz != Void.class) {
+            if(apiResClz.isAnnotationPresent(ApiModel.class)){
+                KvMap commonResKv = this.parseSwaggerModel(apiResClz);
+                swaggerModelName = commonResKv.getStr("name");
+                return swaggerModelName;
+            }
         }
 
         if (responses.size() == 0) {

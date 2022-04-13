@@ -9,7 +9,6 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
-import org.noear.solon.swagger.annotation.ApiResCustom;
 
 /**
  * @author: lbq
@@ -27,7 +26,6 @@ public class CustomController {
             @ApiImplicitParam(name = "paramA", value = "参数a", defaultValue = "1111"),
             @ApiImplicitParam(name = "paramB", value = "参数b", defaultValue = "222"),
     })
-    @ApiResCustom(CordonAlarmResult.class)
     @Mapping("test8")
     public CordonAlarmResult test8(String paramA, String paramB) {
         CordonAlarmData cordonAlarmData = new CordonAlarmData();
