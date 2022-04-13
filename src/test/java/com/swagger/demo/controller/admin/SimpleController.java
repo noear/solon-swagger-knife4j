@@ -1,6 +1,5 @@
 package com.swagger.demo.controller.admin;
 
-import com.jfinal.kit.Kv;
 import com.swagger.demo.model.bean.DeviceParamBean;
 import com.swagger.demo.model.dto.EquipDto;
 import com.swagger.demo.model.dto.MachineDto;
@@ -14,7 +13,7 @@ import org.noear.solon.annotation.Controller;
 import org.noear.solon.annotation.Mapping;
 import org.noear.solon.swagger.annotation.ApiRes;
 import org.noear.solon.swagger.annotation.ApiResProperty;
-import org.noear.solon.swagger.handler.ApiEnum;
+import org.noear.solon.swagger.annotation.ApiEnum;
 import org.noear.solon.swagger.handler.SwaggerRes;
 import org.noear.solon.swagger.util.KvMap;
 

@@ -8,10 +8,7 @@ import java.lang.reflect.Type;
 import java.util.*;
 
 
-import org.noear.solon.swagger.annotation.ApiNoAuthorize;
-import org.noear.solon.swagger.annotation.ApiRes;
-import org.noear.solon.swagger.annotation.ApiResCustom;
-import org.noear.solon.swagger.annotation.ApiResProperty;
+import org.noear.solon.swagger.annotation.*;
 
 import org.noear.solon.swagger.util.Base64Utils;
 import org.noear.solon.swagger.util.KvMap;

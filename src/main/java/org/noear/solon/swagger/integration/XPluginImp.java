@@ -2,11 +2,13 @@ package org.noear.solon.swagger.integration;
 
 import java.util.Map;
 
+import org.noear.solon.Utils;
+import org.noear.solon.core.Props;
+import org.noear.solon.swagger.annotation.EnableSwagger;
 import org.noear.solon.swagger.handler.SwaggerConst;
 import org.noear.solon.swagger.handler.SwaggerHttpCode;
 import org.noear.solon.swagger.handler.SwaggerRes;
 import org.noear.solon.swagger.handler.SwaggerController;
-import org.noear.solon.Solon;
 import org.noear.solon.SolonApp;
 import org.noear.solon.core.Plugin;
 import org.noear.solon.swagger.handler.SwaggerHandler;
@@ -55,7 +57,11 @@ public class XPluginImp implements Plugin {
 
     @Override
     public void start(SolonApp app) {
-        SwaggerConst.CONFIG = Solon.cfg().getProp(this.propPath);
+        if (app.source().isAnnotationPresent(EnableSwagger.class) == false) {
+            return;
+        }
+
+        SwaggerConst.CONFIG = new Props(Utils.loadProperties(this.propPath));
         SwaggerConst.HTTP_CODE = this.httpCode;
         SwaggerConst.COMMON_RES = this.commonRet;
         SwaggerConst.RESPONSE_IN_DATA = SwaggerConst.CONFIG.getBool("responseInData", true);
@@ -63,10 +69,5 @@ public class XPluginImp implements Plugin {
 
         app.before(new SwaggerHandler());
         app.add("/swagger", SwaggerController.class);
-
-//        Engine engine = Engine.create("swagger");
-//        engine.setDevMode(false);
-//        engine.setBaseTemplatePath("/swagger-template");
-//        engine.setToClassPathSourceFactory();
     }
 }

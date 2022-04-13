@@ -1,4 +1,4 @@
-package org.noear.solon.swagger.handler;
+package org.noear.solon.swagger.annotation;
 
 /**
  * Swagger注解所需的类型汇总
