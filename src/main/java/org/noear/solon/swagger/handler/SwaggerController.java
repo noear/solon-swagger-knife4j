@@ -161,16 +161,16 @@ public class SwaggerController {
         Map<Class<?>, List<Action>> apiMap = new HashMap<>(16);
 
         Collection<Routing<Handler>> routingCollection = Solon.global().router().getAll(Endpoint.main);
-        routingCollection.forEach(handler -> {
-            if (handler instanceof Action == false) {
-                return;
+        for(Routing<Handler> routing : routingCollection){
+            if (routing.target() instanceof Action == false) {
+                continue;
             }
 
-            Action action = (Action) handler;
+            Action action = (Action) routing.target();
             Class<?> controller = action.controller().clz();
 
             if (!controller.getName().startsWith(basePackage)) {
-                return;
+                continue;
             }
 
             if (apiMap.containsKey(controller)) {
@@ -190,7 +190,7 @@ public class SwaggerController {
                     }
                 }
             }
-        });
+        }
 
         List<Class<?>> ctlList = new ArrayList<>(apiMap.keySet());
         ctlList.sort((clazz1, clazz2) -> clazz1.getAnnotation(Api.class).position() - clazz2.getAnnotation(Api.class).position());
