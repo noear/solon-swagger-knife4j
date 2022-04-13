@@ -1,4 +1,4 @@
-package org.noear.solon.swagger.common;
+package org.noear.solon.swagger.handler;
 
 
 import org.noear.solon.swagger.util.KvMap;

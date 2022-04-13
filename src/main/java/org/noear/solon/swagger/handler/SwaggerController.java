@@ -1,4 +1,4 @@
-package org.noear.solon.swagger.controller;
+package org.noear.solon.swagger.handler;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -12,8 +12,6 @@ import org.noear.solon.swagger.annotation.ApiNoAuthorize;
 import org.noear.solon.swagger.annotation.ApiRes;
 import org.noear.solon.swagger.annotation.ApiResCustom;
 import org.noear.solon.swagger.annotation.ApiResProperty;
-import org.noear.solon.swagger.common.SwaggerConst;
-import org.noear.solon.swagger.enumeration.ApiEnum;
 
 import org.noear.solon.swagger.util.Base64Utils;
 import org.noear.solon.swagger.util.KvMap;

@@ -1,4 +1,4 @@
-package org.noear.solon.swagger.enumeration;
+package org.noear.solon.swagger.handler;
 
 /**
  * Swagger注解所需的类型汇总

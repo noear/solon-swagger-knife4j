@@ -1,21 +1,22 @@
-package org.noear.solon.swagger.plugin;
+package org.noear.solon.swagger.integration;
 
 import java.util.Map;
 
-import org.noear.solon.swagger.common.SwaggerConst;
-import org.noear.solon.swagger.common.SwaggerHttpCode;
-import org.noear.solon.swagger.common.SwaggerRes;
-import org.noear.solon.swagger.controller.SwaggerController;
+import org.noear.solon.swagger.handler.SwaggerConst;
+import org.noear.solon.swagger.handler.SwaggerHttpCode;
+import org.noear.solon.swagger.handler.SwaggerRes;
+import org.noear.solon.swagger.handler.SwaggerController;
 import org.noear.solon.Solon;
 import org.noear.solon.SolonApp;
 import org.noear.solon.core.Plugin;
+import org.noear.solon.swagger.handler.SwaggerHandler;
 
 /**
  * @author: lbq
  * 联系方式: 526509994@qq.com
  * 创建日期: 2020/6/12
  */
-public class SwaggerPlugin implements Plugin {
+public class XPluginImp implements Plugin {
     /**
      * swagger配置文件
      */
@@ -31,22 +32,22 @@ public class SwaggerPlugin implements Plugin {
      */
     private Class<?> commonRet;
 
-    public SwaggerPlugin setPropPath(String propPath) {
+    public XPluginImp setPropPath(String propPath) {
         this.propPath = propPath;
         return this;
     }
 
-    public SwaggerPlugin setHttpCode(Map httpCode) {
+    public XPluginImp setHttpCode(Map httpCode) {
         this.httpCode = httpCode;
         return this;
     }
 
-    public SwaggerPlugin setCommonRet(Class<?> commonRet) {
+    public XPluginImp setCommonRet(Class<?> commonRet) {
         this.commonRet = commonRet;
         return this;
     }
 
-    public SwaggerPlugin() {
+    public XPluginImp() {
         this.propPath = "swagger.properties";
         this.httpCode = new SwaggerHttpCode().getHttpCodeKv();
         this.commonRet = SwaggerRes.class;
@@ -60,6 +61,7 @@ public class SwaggerPlugin implements Plugin {
         SwaggerConst.RESPONSE_IN_DATA = SwaggerConst.CONFIG.getBool("responseInData", true);
 
 
+        app.before(new SwaggerHandler());
         app.add("/swagger", SwaggerController.class);
 
 //        Engine engine = Engine.create("swagger");

@@ -1,4 +1,4 @@
-package org.noear.solon.swagger.common;
+package org.noear.solon.swagger.handler;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
