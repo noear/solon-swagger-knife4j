@@ -45,6 +45,5 @@ public class SwaggerConfig {
     public SwaggerConfig() {
         this.propPath = "swagger.properties";
         this.httpCode = new SwaggerHttpCode().getHttpCodeKv();
-        this.commonRet = SwaggerRes.class;
     }
 }
