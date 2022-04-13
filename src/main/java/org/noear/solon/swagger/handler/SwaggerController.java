@@ -8,6 +8,7 @@ import java.lang.reflect.Type;
 import java.util.*;
 
 
+import org.noear.solon.annotation.Singleton;
 import org.noear.solon.swagger.SwaggerConst;
 import org.noear.solon.swagger.annotation.*;
 
@@ -32,6 +33,7 @@ import org.noear.solon.core.route.Routing;
  * 联系方式: 526509994@qq.com
  * 创建日期: 2020/9/16
  */
+@Singleton(false)
 public class SwaggerController {
 
     /**
