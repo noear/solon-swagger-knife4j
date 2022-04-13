@@ -14,7 +14,6 @@ import org.noear.solon.swagger.handler.SwaggerRes;
 import org.noear.solon.swagger.handler.SwaggerController;
 import org.noear.solon.SolonApp;
 import org.noear.solon.core.Plugin;
-import org.noear.solon.swagger.handler.SwaggerHandler;
 
 /**
  * @author: lbq
@@ -74,8 +73,6 @@ public class XPluginImp implements Plugin {
 
 
         StaticMappings.add("/", new ClassPathStaticRepository("META-INF/resources"));
-
-        //app.before(new SwaggerHandler());
         app.add("", SwaggerController.class);
     }
 }
