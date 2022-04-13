@@ -14,7 +14,7 @@ import org.noear.solon.annotation.Mapping;
 import org.noear.solon.swagger.annotation.ApiRes;
 import org.noear.solon.swagger.annotation.ApiResProperty;
 import org.noear.solon.swagger.annotation.ApiEnum;
-import org.noear.solon.swagger.handler.SwaggerRes;
+import org.noear.solon.swagger.SwaggerRes;
 import org.noear.solon.swagger.util.KvMap;
 
 import java.util.HashMap;

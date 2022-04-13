@@ -8,6 +8,7 @@ import java.lang.reflect.Type;
 import java.util.*;
 
 
+import org.noear.solon.swagger.SwaggerConst;
 import org.noear.solon.swagger.annotation.*;
 
 import org.noear.solon.swagger.util.Base64Utils;

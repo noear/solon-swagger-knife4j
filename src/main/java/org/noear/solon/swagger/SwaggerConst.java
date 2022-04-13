@@ -1,4 +1,4 @@
-package org.noear.solon.swagger.handler;
+package org.noear.solon.swagger;
 
 import java.util.Map;
 
