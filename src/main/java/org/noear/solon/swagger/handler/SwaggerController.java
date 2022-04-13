@@ -237,7 +237,7 @@ public class SwaggerController {
      * 解析action
      */
     private void parseAction(List<Action> actions) {
-        actions.forEach((Action action) -> {
+        for (Action action : actions) {
             Method method = action.method().getMethod();
 
             ApiOperation apiAction = method.getAnnotation(ApiOperation.class);
@@ -249,12 +249,13 @@ public class SwaggerController {
             String controllerKey = this.getControllerKey(action.controller().clz());
             String actionName = action.name();//action.getMethodName();
 
-            Set<String> tags = new HashSet<>();
-            tags.addAll(Arrays.asList(actions.get(0).controller().clz().getAnnotation(Api.class).tags()));
-            tags.addAll(Arrays.asList(apiAction.tags()));
+            Set<String> actionTags = new HashSet<>();
+            actionTags.addAll(Arrays.asList(actions.get(0).controller().clz().getAnnotation(Api.class).tags()));
+            actionTags.addAll(Arrays.asList(apiAction.tags()));
+            actionTags.remove("");
 
             KvMap actionKv = new KvMap();
-            actionKv.set("tags", tags)
+            actionKv.set("tags", actionTags)
                     .set("summary", apiAction.value())
                     .set("description", apiAction.notes())
                     .set("deprecated", method.isAnnotationPresent(Deprecated.class))
@@ -268,8 +269,7 @@ public class SwaggerController {
                     .set("actionName", actionName);
 
             pathList.add(actionKv);
-        });
-
+        }
     }
 
     /**
