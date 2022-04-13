@@ -5,6 +5,8 @@ import java.util.Properties;
 
 import org.noear.solon.Utils;
 import org.noear.solon.core.Props;
+import org.noear.solon.extend.staticfiles.StaticMappings;
+import org.noear.solon.extend.staticfiles.repository.ClassPathStaticRepository;
 import org.noear.solon.swagger.annotation.EnableSwagger;
 import org.noear.solon.swagger.handler.SwaggerConst;
 import org.noear.solon.swagger.handler.SwaggerHttpCode;
@@ -71,7 +73,9 @@ public class XPluginImp implements Plugin {
         SwaggerConst.RESPONSE_IN_DATA = SwaggerConst.CONFIG.getBool("responseInData", true);
 
 
-        app.before(new SwaggerHandler());
+        StaticMappings.add("/", new ClassPathStaticRepository("META-INF/resources"));
+
+        //app.before(new SwaggerHandler());
         app.add("", SwaggerController.class);
     }
 }

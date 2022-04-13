@@ -59,6 +59,12 @@
 
         <dependency>
             <groupId>org.noear</groupId>
+            <artifactId>solon.extend.staticfiles</artifactId>
+            <version>${solon.ver}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.noear</groupId>
             <artifactId>solon-api</artifactId>
             <version>${solon.ver}</version>
             <scope>test</scope>
