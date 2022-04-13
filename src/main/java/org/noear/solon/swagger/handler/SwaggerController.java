@@ -67,9 +67,8 @@ public class SwaggerController {
      * 默认转发
      */
     @Mapping(value = "swagger",produces = "text/html; charset=utf-8")
-    public String index() throws IOException {
-        String html = Utils.getResourceAsString("META-INF/resources/doc.html");
-        return html;
+    public void index(Context ctx) throws IOException {
+        ctx.forward("/doc.html");
     }
 
     /**
