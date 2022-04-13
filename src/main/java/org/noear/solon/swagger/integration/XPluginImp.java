@@ -68,6 +68,6 @@ public class XPluginImp implements Plugin {
 
 
         app.before(new SwaggerHandler());
-        app.add("/swagger", SwaggerController.class);
+        app.add("", SwaggerController.class);
     }
 }

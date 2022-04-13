@@ -66,7 +66,7 @@ public class SwaggerController {
     /**
      * 默认转发
      */
-    @Mapping(value = "",produces = "text/html; charset=utf-8")
+    @Mapping(value = "swagger",produces = "text/html; charset=utf-8")
     public String index() throws IOException {
         return Utils.getResourceAsString("META-INF/resources/doc.html");
     }
@@ -88,7 +88,7 @@ public class SwaggerController {
     /**
      * 获取api接口解析JSON
      */
-    @Mapping(value = "api", produces = "application/json; charset=utf-8")
+    @Mapping(value = "swagger/api", produces = "application/json; charset=utf-8")
     public ModelAndView api(Context ctx) throws IOException {
         if (!this.basicAuth(ctx)) {
             this.response401(ctx);
