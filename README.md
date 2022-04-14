@@ -9,7 +9,7 @@ maven引入
 <dependency>
     <groupId>org.noear</groupId>
     <artifactId>solon-swagger-knife4j</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.0-M1</version>
 </dependency>
 ```
 
