@@ -19,6 +19,8 @@ maven引入
     <artifactId>solon-swagger-knife4j</artifactId>
     <version>1.0.0-M1</version>
 </dependency>
+
+<!-- 需配合 solon 1.7.2-M1 或更高版本使用 -->
 ```
 
 启用示例
