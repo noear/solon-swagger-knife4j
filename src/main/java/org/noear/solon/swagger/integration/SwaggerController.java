@@ -422,6 +422,9 @@ public class SwaggerController {
         Field[] fields = clazz.getDeclaredFields();
         for (Field field : fields) {
             ApiModelProperty apiField = field.getAnnotation(ApiModelProperty.class);
+            if(apiField == null){
+                continue;
+            }
 
             // List<Class> 类型
             if (field.getType() == List.class) {
@@ -430,6 +433,7 @@ public class SwaggerController {
                 if (genericType == null) {
                     continue;
                 }
+
                 // 如果是泛型参数的类型
                 if (genericType instanceof ParameterizedType) {
                     ParameterizedType pt = (ParameterizedType) genericType;
