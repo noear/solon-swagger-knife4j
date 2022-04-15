@@ -5,10 +5,7 @@
 
 
 
-
-solon-swagger-knife4j = Solon to easy use knife4j UI for swagger
-
-solon 集成 knife4j , 按UI规范生成相应的 Swagger Json
+solon 集成 knife4j , 按UI规范生成相应的 Swagger Json。目前处于试验中
 
 
 使用方式：
