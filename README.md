@@ -17,7 +17,7 @@ maven引入
     <version>1.0.1-M1</version>
 </dependency>
 
-<!-- 需配合 solon 1.7.2-M1 或更高版本使用 -->
+<!-- 需配合 solon 1.8.0 或更高版本使用 -->
 ```
 
 启用示例（启动后打开：`/swagger`）
