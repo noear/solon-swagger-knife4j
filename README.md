@@ -14,7 +14,7 @@ maven引入
 <dependency>
     <groupId>org.noear</groupId>
     <artifactId>solon-swagger-knife4j</artifactId>
-    <version>1.0.0-M2</version>
+    <version>1.0.1-M1</version>
 </dependency>
 
 <!-- 需配合 solon 1.7.2-M1 或更高版本使用 -->
