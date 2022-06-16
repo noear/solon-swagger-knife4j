@@ -27,7 +27,6 @@ public class XPluginImp implements Plugin {
             return;
         }
 
-
         StaticMappings.add("/", new ClassPathStaticRepository("META-INF/resources"));
         Solon.app().add("", SwaggerController.class);
 
