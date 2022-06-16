@@ -2,15 +2,16 @@ package org.noear.solon.swagger.integration;
 
 import java.util.Properties;
 
+import org.noear.solon.Solon;
 import org.noear.solon.Utils;
 import org.noear.solon.core.Aop;
+import org.noear.solon.core.AopContext;
 import org.noear.solon.core.Props;
 import org.noear.solon.extend.staticfiles.StaticMappings;
 import org.noear.solon.extend.staticfiles.repository.ClassPathStaticRepository;
 import org.noear.solon.swagger.SwaggerConfig;
 import org.noear.solon.swagger.annotation.EnableSwagger;
 import org.noear.solon.swagger.SwaggerConst;
-import org.noear.solon.SolonApp;
 import org.noear.solon.core.Plugin;
 
 /**
@@ -21,17 +22,17 @@ import org.noear.solon.core.Plugin;
 public class XPluginImp implements Plugin {
 
     @Override
-    public void start(SolonApp app) {
-        if (app.source().isAnnotationPresent(EnableSwagger.class) == false) {
+    public void start(AopContext context) {
+        if (Solon.app().source().isAnnotationPresent(EnableSwagger.class) == false) {
             return;
         }
 
 
         StaticMappings.add("/", new ClassPathStaticRepository("META-INF/resources"));
-        app.add("", SwaggerController.class);
+        Solon.app().add("", SwaggerController.class);
 
 
-        Aop.beanOnloaded(()->{
+        context.beanOnloaded((ctx)->{
             SwaggerConfig config = Aop.getOrNew(SwaggerConfig.class);
 
             Properties properties = Utils.loadProperties(config.getPropPath());
